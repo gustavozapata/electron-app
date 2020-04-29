@@ -44,6 +44,9 @@ notifyBtn.addEventListener("click", function (event) {
     frame: false, //no menu at the top
     transparent: true,
     alwaysOnTop: true, //sticky window (always visible)
+    webPreferences: {
+      nodeIntegration: true,
+    },
   });
   win.on("close", function () {
     win = null;
@@ -54,5 +57,5 @@ notifyBtn.addEventListener("click", function (event) {
 
 ipc.on("targetPriceVal", function (event, arg) {
   targetPriceVal = Number(arg);
-  targetPrice.innerHTML = `$${targetPriceVal.toLocaleString("en")}`;
+  targetPrice.innerHTML = "$" + targetPriceVal.toLocaleString("en");
 });
